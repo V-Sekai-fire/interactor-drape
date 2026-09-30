@@ -9,7 +9,7 @@
 // gates/2-avbd/native_*.log.
 #include "avbd_jobs.h"
 
-#include "../common/blake3.h"
+#include "common/blake3.h"
 
 #include <algorithm>
 #include <array>

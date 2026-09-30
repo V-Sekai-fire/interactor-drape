@@ -18,6 +18,7 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/../.." && pwd)"
+RUNTIME="${GUEST_RUNTIME_ROOT:-$(cd "$ROOT/../../2-contract/guest-runtime" && pwd)}"
 LEAN="${CLOTH_LEAN:-$ROOT/lean}"
 BUILD="${BUILD_DIR:-$ROOT/build}"
 SLANGC="${SLANGC:-slangc}"
@@ -62,6 +63,6 @@ for k in $KERNELS; do
 		-reflection-json "$BUILD/spv/$k.refl.json" -o "$BUILD/spv/$k.spv" "$HERE/slang/$k.slang"
 done
 echo "== binding table =="
-python "$HERE/gen_avbd_kernel_table.py" --build-dir "$BUILD/spv" --out "$HERE/AvbdKernelTable.inc" $KERNELS
+python "$RUNTIME/kernels/avbd/gen_avbd_kernel_table.py" --build-dir "$BUILD/spv" --out "$HERE/AvbdKernelTable.inc" $KERNELS
 echo "== embedding SPIR-V =="
-python "$HERE/../embed_spv.py" "$BUILD/spv" "$BUILD/avbd_kernels.inc"
+python "$RUNTIME/kernels/embed_spv.py" "$BUILD/spv" "$BUILD/avbd_kernels.inc"

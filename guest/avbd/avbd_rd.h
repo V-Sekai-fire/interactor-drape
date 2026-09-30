@@ -38,7 +38,7 @@
 #include <utility>
 #include <vector>
 
-#include "../rd_compute.h"
+#include "rd_compute.h"
 #include "../avbd_table.h"
 
 class AvbdRd {

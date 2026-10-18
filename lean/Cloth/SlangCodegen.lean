@@ -1,3 +1,5 @@
+import Cloth.SlangCodegen.IpcPointTriangle
+import Cloth.SlangCodegen.IpcStepClamp
 import Cloth.SlangCodegen.SpringProject
 import Cloth.SlangCodegen.TriangleBending
 import Cloth.SlangCodegen.AttachmentProject
